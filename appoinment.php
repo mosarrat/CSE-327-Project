@@ -18,6 +18,7 @@
             $row = mysqli_fetch_assoc($result);
             $service_title = $row['Title'];
             $price = $row['Price'];
+            $price_des = $row['Price_des'];
             $discription = $row['Description'];
             $image_name = $row['Image_Name'];
         
@@ -41,7 +42,7 @@
     <section class="service-search">
         <div class="Container">
             <h2 class="text-center text-white">Fill this form to confirm your Appoinment.</h2>
-            <form action="#" class="order">
+            <form action="Confirm_appoinment.php" method="post" class="order">
                 <fieldset>
                     <legend><b> Selected Service</b></legend>
                      <div class="top-service-img">
@@ -62,44 +63,17 @@
                      </div>
                      <div class="top-service-desc">
                         <h4><?php echo $service_title;?></h4>
-                        <p class="service-price"><?php echo $price;?></p>
+                        <input type="hidden" name="stitle" value="<?php echo $service_title; ?>">
+                        <p class="service-price">Tk.<?php echo $price;?> (<?php echo $price_des;?>)</p>
+                        <input type="hidden" name="price" value="<?php echo $price;?>">
+                        <input type="hidden" name="price_des" value="<?php echo $price_des;?>">
                         <div class="order-lebel"><b>Date And Time</b></div>
-                         <input type="datetime-local" name="Date And Time"class="input-responsive" required>
+                         <input type="datetime-local" name="dat"class="input-responsive" required>
+                         <div class="order-lebel"><b>Measures</b></div>
+                         <input type="number" name="mea" placeholder="Your(sq.ft.)/laundry/Car Numbers"class="input-responsive" required>
                      </div>
                 </fieldset>
                 
-                <fieldset>
-                    <legend><b>Area Above 1500sq.ft.</b></legend>
-                     <div class="top-service-img">
-                     <?php
-                         
-                         if($image_name==" ")
-                         {
-                          echo "<div class='error'>Image unavailable</div>";
-                         }
-                         else
-                         {
-                           ?>
-                              <img src="images/service/<?php echo $image_name?>"  alt=" home clean and pest control" class="img-responsive img-curve">
-                           
-                           <?php
-                         }
-                      ?>
-                     </div>
-                     <div class="top-service-desc">
-                        <h4>Additional Amount Require</h4>
-                        <p class="service-price">
-                        <label for="exampleInputActive">1600-2000sp.ft.</label>
-                        <input type="radio" name="active" value="Yes"> 500 <br>
-                        <label for="exampleInputActive">2100-2500sp.ft.</label>
-                        <input type="radio" name="active" value="Yes"> 1000 <br>
-                        <label for="exampleInputActive">2600-3000sp.ft.</label>
-                        <input type="radio" name="active" value="Yes"> 1500 <br>
-                        <label for="exampleInputActive">Above</label>
-                        <input type="radio" name="active" value="Yes"> 2000
-                        </p>
-                </fieldset>
-
                 <fieldset>
                     <legend> <b>Appoinment Details</b></legend>
                     <div class="order-label">Full Name</div>
@@ -118,24 +92,9 @@
                     
                 </fieldset>
             </form>
-             
-
-
-
-
-
-
-
-
-
-
-
-
-
+            
         </div>
     </section>
     <!--service-search section starts here-->
-
-
 
 <?php include('partials-front/footer.php');?>

@@ -87,9 +87,10 @@
               $ID = $row['Id'];
               $service_title = $row['Title'];
               $price = $row['Price'];
+              $price_des = $row['Price_des'];
               $discription = $row['Description'];
               $image_name = $row['Image_Name'];
-              $category_title = $row['Category_Title'];
+              //$category_title = $row['Category_Title'];
              // $active = $row['Active'];
              ?>
                 <!--1-->
@@ -113,7 +114,7 @@
                    </div>
                    <div class="top-service-desc">
                       <h4><?php echo $service_title;?></h4>
-                      <p class="service-price"><?php echo $price;?></p>
+                      <p class="service-price">TK.<?php echo $price;?> (<?php echo $price_des;?>)</p>
                       <p class="service-detail"><?php echo $discription;?></p>
                       <br>
                       <a href="appoinment.php?service_id=<?php echo $ID;?>" class="btn btn-primary">Appoint Now</a>
